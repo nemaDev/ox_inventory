@@ -1,0 +1,548 @@
+$mainColor: rgba(255, 255, 255, 0.8);
+$textColor: #0a0a0a;
+$mainFont: Roboto;
+
+$seconaryColor: rgba(12, 12, 12, 0.4);
+$secondaryColorLight: rgba(0, 0, 0, 0.5);
+$secondaryColorDark: rgba(255, 255, 255, 0.8);
+
+$gridCols: 5;
+$gridRows: 3;
+$gridSize: 9.2vh;
+$gridGap: 2px;
+$containerSize: calc(#{$gridRows} * #{$gridSize + 0.22vh} + #{$gridRows} * #{$gridGap});
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans',
+    'Droid Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  height: 100vh;
+  background: none !important;
+  overflow: hidden !important;
+  user-select: none;
+}
+
+#root {
+  height: 100%;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+p {
+  margin: 0;
+  padding: 0;
+  font-family: $mainFont;
+}
+
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.MuiMenuItem-root > div > p {
+  padding: 0 !important;
+}
+
+.MuiMenu-list {
+  min-width: 200px;
+  background-color: $mainColor;
+  color: $textColor;
+  padding: 4px;
+  border-color: rgba(0, 0, 0, 0.2);
+  border-style: inset;
+  border-width: 1px;
+  font-size: 16px !important;
+}
+
+.MuiMenuItem-gutters {
+  padding: 4px 16px !important;
+  font-size: 16px !important;
+}
+
+.tooltip-description {
+  padding-top: 5px;
+}
+
+.tooltip-markdown > p {
+  margin: 0;
+}
+
+button:active {
+  transform: translateY(3px);
+}
+
+.item-drag-preview {
+  width: 7.7vh;
+  height: 7.7vh;
+  z-index: 1;
+  position: fixed;
+  pointer-events: none;
+  top: 0;
+  left: 0;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 7vh;
+  image-rendering: -webkit-optimize-contrast;
+}
+
+.inventory-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-items: flex-end;
+  height: 100%;
+  gap: 5px;
+}
+
+.inventory-control-button:hover {
+  transform: scale(1.1);
+  transition: transform 0.3s ease-out;
+}
+
+// .inventory-control .inventory-control-button:nth-child(2){
+//   height: 8vh;
+//   background-image: url('your use image url');
+//   background-repeat: no-repeat;
+//   background-size: contain;
+//   border: 0px solid rgba(255, 255, 255, 0);
+//   transition: 500ms;
+//   opacity: 0.8;
+//   color: rgba(255, 255, 255, 0);
+// }
+
+// .inventory-control .inventory-control-button:nth-child(3) {
+//   height: 8vh;
+//   background-image: url('your give image url');
+//   background-repeat: no-repeat;
+//   background-size: contain;
+//   border: 0px solid rgba(255, 255, 255, 0);
+//   transition: 500ms;
+//   opacity: 0.8;
+//   color: rgba(255, 255, 255, 0);
+// }
+
+// .inventory-control .inventory-control-button:nth-child(4) {
+//   height: 8vh;
+//   background-image: url('your close image url');
+//   background-repeat: no-repeat;
+//   background-size: contain;
+//   border: 0px solid rgba(255, 255, 255, 0);
+//   transition: 500ms;
+//   opacity: 0.8;
+//   color: rgba(255, 255, 255, 0);
+// }
+
+.inventory-control {
+  display: flex;
+
+  .inventory-control-wrapper {
+    display: flex;
+    background-color: black;
+    margin: 5px;
+    padding: 8px;
+    width: max-content;
+    border-radius: 5px;
+    box-shadow: 0 0 10px black;
+    flex-direction: row;
+    gap: 20px;
+    justify-content: right;
+    align-items: right;
+  }
+
+  // .inventory-control-input {
+  //   transition: 200ms;
+  //   padding: 16px 8px;
+  //   border-radius: 2.5%;
+  //   font-family: $mainFont;
+  //   font-size: 16px;
+  //   text-align: center;
+  //   outline: none;
+  //   border: none;
+  //   color: #fff;
+  //   background-color: $seconaryColor;
+  //   &:focus-within {
+  //     background-color: $secondaryColorDark;
+  //   }
+  // }
+
+  .inventory-control-button, .inventory-control-input { //botones centrales
+    font-size: 14px;
+    //color: #0000006c;
+    background-color: rgb(255, 255, 255);
+    border-radius: 5px;
+    box-shadow: 0 0 10px white;
+    // background-color: $seconaryColor;
+    transition: 200ms;
+    padding: 4px 4px;
+    border: none;
+    text-transform: uppercase;
+    font-family: $mainFont;
+    width: 40%;
+    font-weight: 500;
+    text-align: center;
+    &:hover {
+      background-color: $secondaryColorDark;
+    }
+  }
+}
+
+.useful-controls-dialog {
+  font-size: 18px;
+}
+
+.useful-controls-content-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.useful-controls-button {
+  position: absolute !important;
+  bottom: 25px;
+  right: 25px;
+  transition: 200ms !important;
+  border-radius: 5% !important;
+  background-color: $seconaryColor !important;
+  &:hover {
+    background-color: $secondaryColorDark !important;
+  }
+}
+
+.useful-controls-exit-button {
+  position: absolute !important;
+  right: 8px;
+  top: 8px;
+  border-radius: 2.5% !important;
+  color: rgb(235, 235, 235) !important;
+}
+
+// Dialog is used fro useful controls window
+.MuiDialogContent-root {
+  background-color: $mainColor;
+  color: $textColor;
+}
+
+.MuiDialogTitle-root {
+  background-color: $mainColor;
+  color: $textColor;
+}
+
+.MuiDialogActions-root {
+  background-color: $mainColor;
+  color: $textColor;
+}
+
+// inventory grids
+.inventory-grid-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: calc($gridGap * 2);
+  // background-color: rgb(180, 9, 223);
+  // background: rgb(2,0,36);
+  // background: rgb(131,58,180);
+  // background: linear-gradient(90deg, rgba(83, 10, 55, 0.959) 14%, rgb(204, 7, 72) 50%, rgb(122, 30, 95) 100%);
+  margin: 5px;
+  padding: 5px;
+  background-color: rgba(0, 0, 0, 0.808); // color general
+  border-radius: 5px;
+  box-shadow: 0 0 10px #000;
+  border-bottom: 16px solid black;
+}
+.inventory-grid-header-wrapper { // cabecera donde estan los kg
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  p {
+    font-size: 16px;
+  }
+}
+
+.inventory-grid-container {
+  display: grid;
+  height: $containerSize;
+  grid-template-columns: repeat($gridCols, $gridSize);
+  grid-auto-rows: $gridSize + 0.22vh;
+  gap: 4px;
+  overflow-y: scroll;
+}
+
+// inventory slots
+.inventory-slot {
+  background-color: $seconaryColor;
+  background-repeat: no-repeat;
+  background-position: bottom;
+  border-radius: 7%;
+  position: relative;
+  background-size: 7vh;
+  // color: $textColor; //color de letras chicas
+  color: rgb(235, 235, 235); //color de letras chicas
+  background-color: rgba(92, 92, 92, 0.267); // fondo slots cuadrados
+
+  border-color: rgba(0, 0, 0, 0.2);
+  border-style: inset;
+  border-width: 1px;
+}
+
+// .inventory-slot:hover {
+//   transform: scale(1.03);
+//   /*transition:ease-in-out 0.3s;*/
+//   z-index: 9999999;
+// }
+
+// .inventory-slot-label-box {
+//   position: absolute;
+//   bottom: 0;
+//   width: 100%;
+//   background-color: white;
+//   min-height: 25px;
+//   height: auto;
+//   border-radius: 0 0 5px 5px;
+//   border: 1px solid white;
+//   display: none;
+// }
+
+// .inventory-slot-label-box p {
+//   color: rgb(0 0 0);
+//   font-size: 0.8em;
+//   line-height: 22px;
+//   text-align: center;
+//   font-family: Verdana;
+// }
+
+.inventory-slot-label-box {
+  background-color: $mainColor;
+  color: $textColor;
+  text-align: center;
+  border-top-left-radius: 0.65vh;
+  border-top-right-radius: 0.65vh;
+  border-bottom-left-radius: 0.65vh;
+  border-bottom-right-radius: 0.65vh;
+  border-top-color: rgba(0, 0, 0, 0.2);
+  border-top-style: inset;
+  border-top-width: 1px;
+  display: none;
+  // border-radius: 3px 3px 3px;
+}
+
+.inventory-slot-label-text {
+  text-transform: uppercase;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 1px 3px;
+  font-weight: 400;
+  font-family: $mainFont;
+  font-size: 12px;
+}
+
+.inventory-slot-number {
+  background-color: white;
+  color: black;
+  height: 12px;
+  border-top-left-radius: 0.25vh;
+  border-bottom-right-radius: 0.25vh;
+  padding: 3px;
+  font-size: 12px;
+  font-family: $mainFont;
+  display: none;
+}
+
+.item-slot-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  p {
+    font-size: 12px;
+  }
+}
+
+.item-slot-header-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.item-hotslot-header-wrapper {
+  @extend .item-slot-header-wrapper;
+  justify-content: space-between !important;
+}
+
+.item-slot-info-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-self: flex-end;
+  padding: 3px;
+  gap: 3px;
+  p {
+    font-size: 12px;
+  }
+}
+
+.item-slot-currency-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  padding-right: 3px;
+  p {
+    font-size: 14px;
+    text-shadow: 0.1vh 0.1vh 0 rgba(0, 0, 0, 0.7);
+  }
+}
+
+.item-slot-price-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  padding-right: 3px;
+  p {
+    font-size: 14px;
+    text-shadow: 0.1vh 0.1vh 0 rgba(0, 0, 0, 0.7);
+  }
+}
+
+// slot tooltip
+.MuiTooltip-tooltip {
+  background-color: $mainColor !important;
+  min-width: 200px !important;
+  color: $textColor !important;
+  font-family: $mainFont !important;
+  border-radius: 4px !important;
+  border-color: rgba(0, 0, 0, 0.2) !important;
+  border-style: inset !important;
+  border-width: 1px !important;
+}
+
+.tooltip-wrapper {
+  display: flex;
+  flex-direction: column;
+  p {
+    font-size: 14px;
+    font-weight: 400;
+  }
+}
+
+.tooltip-header-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  p {
+    font-size: 15px;
+    font-weight: 400;
+  }
+}
+
+.tooltip-crafting-duration {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  svg {
+    padding-right: 3px;
+  }
+  p {
+    font-size: 14px;
+  }
+}
+
+.tooltip-ingredients {
+  padding-top: 5px;
+}
+
+.tooltip-ingredient {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  img {
+    width: 28px;
+    height: 28px;
+    padding-right: 5px;
+  }
+}
+
+// hotbar
+.hotbar-container {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  justify-content: center;
+  width: 100%;
+  position: absolute;
+  bottom: 2vh;
+}
+
+.hotbar-item-slot {
+  @extend .inventory-slot;
+  width: $gridSize;
+  height: $gridSize;
+}
+
+.hotbar-slot-header-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+// item notifications
+
+.item-notification-container {
+  display: flex;
+  overflow-x: scroll;
+  flex-wrap: nowrap;
+  gap: 2px;
+  position: absolute;
+  bottom: 20vh;
+  left: 50%;
+  width: 100%;
+  margin-left: calc(50% - calc($gridSize/2));
+  transform: translate(-50%);
+}
+
+.item-notification-action-box {
+  width: 100%;
+  color: $textColor;
+  background-color: $seconaryColor;
+  text-transform: uppercase;
+  text-align: center;
+  border-top-left-radius: 0.25vh;
+  border-top-right-radius: 0.25vh;
+  font-family: $mainFont;
+  p {
+    font-size: 11px;
+    padding: 2px;
+    font-weight: 600;
+  }
+}
+
+.item-notification-item-box {
+  @extend .inventory-slot;
+  height: $gridSize;
+  width: $gridSize;
+}
+
+.durability-bar {
+  background: rgba(44, 44, 44, 0.5);
+  height: 3px;
+  overflow: hidden;
+}
+
+.weight-bar {
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px inset rgba(0, 0, 0, 0.1);
+  height: 0.8vh;
+  // border-radius: 5%;
+  overflow: hidden;
+}
